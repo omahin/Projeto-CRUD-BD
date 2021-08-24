@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const titulo = require('../models/titulo')
 const Titulo = require('../models/titulo')
 
 const getAllMarvel = async (req, res) => {
@@ -42,9 +43,17 @@ const createTitle = async (req, res) => {
   }
 }
 
-const updateOne = async(req, res) => {
-  
-    try {
+const getById = async (req, res) => {
+    const titulos = await Titulo.find()
+    // console.log(titulos)
+    const requireId = req.params.id
+    const filterId = titulos.filter(titulo => titulo.id == requireId)
+  res.status(201).send(filterId)
+  // console.log(filterId)
+}
+
+const updateOne = async (req, res) => {
+   try {
       //Tenta encontrar um titulo pelo id
       const titulo = await Titulo.findById(req.params.id)
       //Se você não encontrar me retorne o erro
@@ -53,20 +62,21 @@ const updateOne = async(req, res) => {
       }
       //No corpo da requisição tem algo digitado, considere o que tiver digitado como minha alteração
       if (req.body.descricao != null) {
-        titulo.nome = req.body.nome
-        titulo.genero = req.body.genero
         titulo.descricao = req.body.descricao
-      }
+        }
 
       if (req.body.nome != null) {
         titulo.nome = req.body.nome
         }
-
-        if (req.body.genero != null) {
+        
+      if (req.body.genero != null) {
             titulo.genero = req.body.genero
-            }
-    
-      //Já salvou?
+        }
+        
+      if (req.body.estudio != null) {
+          titulo.estudio = req.body.estudio
+        }
+          //Já salvou?
       const tituloAtualizado = await titulo.save()
       //Retornando o documento atualizado com o código de sucesso
       res.status(200).json(tituloAtualizado)
@@ -77,11 +87,64 @@ const updateOne = async(req, res) => {
     }
   }
 
+  const deleteTitle = async(req, res) => {
+      const requiredId = req.params.id
+      const filterTitle = await Titulo.findOne({ _id: requiredId})
+        //   if(!filterTitle){
+        //       res.status(500).json({ message: err.message})
+        //   } else{
+              try{
+                  Titulo.deleteOne({ _id:requiredId }, function (err){
+                      if(!err) {
+                        res.status(200).json({
+                            message: 'Titulo apagado com sucesso',
+                            status: 'SUCESSO'
+                        })
+                      } else {
+                        res.status(500).json({
+                            message: err.message,
+                            status: "FAIL"
+                          })
+                      }
+                  })
+              } catch{
+                res.status(404).json({ message: 'Não há titulos para remover com o ID inserido'})
+            }
+                        
+          }
+    //   }
+
+// const deleteTitle = async (req, res) => {
+//     const idTitulo = req.params.id 
+//     const validaTitulo = await Titulo.findOne({ _id: idTitulo})
+//     if(!validaTitulo) {
+//         res.status(404).json({ message: "Titulo não referenciado por este id." })
+//     }
+//     else{
+//         try{
+//             Titulo.remove({ _id:idTitulo} , function (err){
+//                 if(!err){
+//                     res.status(200).json( "Titulo deletado com sucesso!")
+//                 }
+//                 else{
+//                     res.status(400).json({ message: err.message })
+//                 }
+//             })
+//         }catch (err){
+//             res.status(500).json({ message: err.message })
+//         }
+//     }
+//   }
+  
+
+
 module.exports = {
   getAll,
   createTitle,
   getAllMarvel,
   getAllGhibli,
   getAllPixar,
-  updateOne
+  updateOne,
+  deleteTitle,
+  getById
 }

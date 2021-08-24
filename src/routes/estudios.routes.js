@@ -9,10 +9,12 @@ router.get('/', controller.getAll)
 router.post('/', controller.createStudio)
 
 //listar um estudio/get/findById
+router.get('/:id', controller.getById)
 
 //atualizar uma informacao especifica num estudio/patch/findById/save
 router.patch('/:id', controller.updateOne)
 
 //deletar um estudio/delete/findById/remove
+router.delete('/:id', controller.deleteById)
 
 module.exports = router

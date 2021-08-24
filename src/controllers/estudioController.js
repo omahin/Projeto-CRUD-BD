@@ -6,6 +6,15 @@ const getAll = async (req, res) => {
   res.json(estudios)
 }
 
+const getById = async (req, res) => {
+  const estudios = await Estudio.find()
+  // console.log(titulos)
+  const requireId = req.params.id
+  const filterId = estudios.filter(estudio => estudio.id == requireId)
+res.status(201).send(filterId)
+// console.log(filterId)
+}
+
 const createStudio = async (req, res) => {
   const estudio = new Estudio({
     _id: new mongoose.Types.ObjectId(),
@@ -48,8 +57,37 @@ const updateOne = async(req, res) => {
   }
 }
 
+const deleteById = async (req, res) => {
+  const requiredId = req.params.id
+  const filterEstudio = await Estudio.findOne({ _id: requiredId})
+    //   if(!filterTitle){
+    //       res.status(500).json({ message: err.message})
+    //   } else{
+          try{
+            Estudio.deleteOne({ _id:requiredId }, function (err){
+                  if(!err) {
+                    res.status(200).json({
+                        message: 'Estudio apagado com sucesso',
+                        status: 'SUCESSO'
+                    })
+                  } else {
+                    res.status(500).json({
+                        message: err.message,
+                        status: "FAIL"
+                      })
+                  }
+              })
+          } catch{
+            res.status(404).json({ message: 'Não há Estudio para remover com o ID inserido'})
+        }
+                    
+      }
+//   }
+
 module.exports = {
   getAll,
+  getById,
   createStudio,
-  updateOne
+  updateOne,
+  deleteById
 }

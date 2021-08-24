@@ -1,14 +1,12 @@
+Reprograma 🚀 | Turma Online 12 | Semana 14 | Back-end | 2021
+
+# API integrada - Mongo com CRUD👯
+
 ## Sobre o Projeto
 
 O **FavMovies** é um sistema de gerenciamento de catálogos de filmes dos estudios Marvel, Ghibli e Pixar. 
 
 Onde receberemos cadastros de títulos(filmes e séries) referenciando cada estúdio criador. 
-
-```
-"Relacionamento" no MongoDB? Como é isso?
-- ref no model
-- populate do find (eager loading)
-```
 
 ## Tecnologias que vamos usar:
 | Ferramenta | Descrição |
@@ -20,7 +18,7 @@ Onde receberemos cadastros de títulos(filmes e séries) referenciando cada est�
 | `mongoose` | Dependência que interage com o MongoDB para a conexão da database, criação do model e das collections|
 | `nodemon` | Dependência que observa as atualizações realizadas nos documentos para rodar o servidor automaticamente|
 | `npm ou yarn` | Gerenciador de pacotes|
-| `MongoDb` | Banco de dado não relacional orietado a documentos|
+| `MongoDb` | Banco de dado não relacional orientado a documentos|
 | `MongoDb Compass ou Robo 3T` | Interface gráfica para verificar se os dados foram persistidos|
  `Insomnia ou Postman` | Interface gráfica para realizar os testes|
 
@@ -65,43 +63,65 @@ Onde receberemos cadastros de títulos(filmes e séries) referenciando cada est�
 Acesse o board para conferir as informações de forma visual: https://miro.com/app/board/o9J_lA7Nns8=/
 
 ### Requisitos
-TITULOS - ROTAS
-{GET} 
-- [x]  **"/titulos/marvel"** Deverá retornar todos os títulos com o estudio Marvel
-- [x]  **"/titulos/ghibli"** Deverá retornar todos os títulos com o estudio Ghibli
-- [x]  **"/titulos/pixar"** Deverá retornar todos os títulos com o estudio Pixar
-- [x] **"/titulos"** Deverá retornar todos os títulos cadastrados, cada um fazendo referencia ao seu respectivo estudio
-- [x] **"/titulos/[ID]"** Deverá retornar os estudios cadastrados por ID
+<br>
 
-{POST}
-- [x]  **"/titulos"**  Deverá criar um título 
+**_Titulos - Rotas_**
 
-{PATCH}
-- [ ]  **"/titulos/[ID]"** Deverá alterar informação específica dentro de um titulo por id específico e retorna o título alterado
+_**{GET}**_
 
-{DELETE}
-- [ ]  **"/titulos/[ID]"** Deverá deletar titulo por id específico e retorna mensagem amigável
+:small_blue_diamond:  **"/titulos/marvel"** Deverá retornar todos os títulos com o estudio Marvel
 
-ESTUDIOS - ROTAS
-{GET}
-- [x]  **"/estudios"** Deverá retornar todos os estudios cadastrados
-- [ ] **"/estudios/[ID]"** Deverá retornar os estudios cadastrados por ID
+:small_blue_diamond:  **"/titulos/ghibli"** Deverá retornar todos os títulos com o estudio Ghibli
 
-{POST}
-- [x]  "**/estudios**" Deverá criar um estudio
+:small_blue_diamond:  **"/titulos/pixar"** Deverá retornar todos os títulos com o estudio Pixar
 
-{PATCH}
-- [x]  **"/estudios/[ID]"** Deverá alterar informação específica dentro de um estudio por id específico e retorna o título alterado
+:small_blue_diamond: **"/titulos"** Deverá retornar todos os títulos cadastrados, cada um fazendo referencia ao seu respectivo estudio
 
-{DELETE}
-- [ ]  **"/estudios/[ID]"** Deverá deletar estudio por id específico e retorna mensagem amigável
+:small_blue_diamond: **"/titulos/[ID]"** Deverá retornar os estudios cadastrados por ID
 
+**_{POST}_**
+
+:small_blue_diamond:  **"/titulos"**  Deverá criar um título 
+
+**_{PATCH}_**
+
+:small_blue_diamond: **"/titulos/[ID]"** Deverá alterar informação específica dentro de um titulo por id específico e retorna o título alterado
+
+**_{DELETE}_**
+
+:small_blue_diamond:  **"/titulos/[ID]"** Deverá deletar titulo por id específico e retorna mensagem amigável
+
+<br>
+
+**_Estudios - Rotas_**
+
+**_{GET}_**
+
+:small_blue_diamond:  **"/estudios"** Deverá retornar todos os estudios cadastrados
+
+:small_blue_diamond: **"/estudios/[ID]"** Deverá retornar os estudios cadastrados por ID
+
+**_{POST}_**
+
+:small_blue_diamond:  "**/estudios**" Deverá criar um estudio
+
+**_{PATCH}_**
+
+:small_blue_diamond:  **"/estudios/[ID]"** Deverá alterar informação específica dentro de um estudio por id específico e retorna o título alterado
+
+**_{DELETE}_**
+
+:small_blue_diamond:  **"/estudios/[ID]"** Deverá deletar estudio por id específico e retorna mensagem amigável
+
+<br>
 
 ### Regras de negócio
 
-- [x]  Não deverá ser possível criar estudio com o mesmo nome
-- [ ]  Não deverá ser possível criar título com o mesmo nome
-- [x]  Para criar um novo título, deverá vincular no momento da criação a um estudio já existente no sistema, utilizando o numero do id do estudio correspondente no corpo da requisição
+:small_blue_diamond:  Não deverá ser possível criar estudio com o mesmo nome
+
+:small_blue_diamond:  Não deverá ser possível criar título com o mesmo nome
+
+:small_blue_diamond:  Para criar um novo título, deverá vincular no momento da criação a um estudio já existente no sistema, utilizando o numero do id do estudio correspondente no corpo da requisição
 
 <br>
 <br>
