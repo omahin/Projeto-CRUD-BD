@@ -114,30 +114,6 @@ const updateOne = async (req, res) => {
           }
     //   }
 
-// const deleteTitle = async (req, res) => {
-//     const idTitulo = req.params.id 
-//     const validaTitulo = await Titulo.findOne({ _id: idTitulo})
-//     if(!validaTitulo) {
-//         res.status(404).json({ message: "Titulo não referenciado por este id." })
-//     }
-//     else{
-//         try{
-//             Titulo.remove({ _id:idTitulo} , function (err){
-//                 if(!err){
-//                     res.status(200).json( "Titulo deletado com sucesso!")
-//                 }
-//                 else{
-//                     res.status(400).json({ message: err.message })
-//                 }
-//             })
-//         }catch (err){
-//             res.status(500).json({ message: err.message })
-//         }
-//     }
-//   }
-  
-
-
 module.exports = {
   getAll,
   createTitle,
