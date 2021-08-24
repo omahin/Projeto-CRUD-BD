@@ -124,7 +124,6 @@ _**{GET}**_
 :small_blue_diamond:  Para criar um novo título, deverá vincular no momento da criação a um estudio já existente no sistema, utilizando o numero do id do estudio correspondente no corpo da requisição
 
 <br>
-<br>
 
 ### Dados para Collection Estudios
 
@@ -157,7 +156,6 @@ _**{GET}**_
   }
 ]
 ```
-<br>
 <br>
 
 ### Dados para Collection Titulos
