@@ -23,7 +23,6 @@ Onde receberemos cadastros de títulos(filmes e séries) referenciando cada est�
  `Insomnia ou Postman` | Interface gráfica para realizar os testes|
 
 <br>
-<br>
 
 ## 📁 Arquitetura 
 
@@ -56,7 +55,6 @@ Onde receberemos cadastros de títulos(filmes e séries) referenciando cada est�
 
 ```
 
-<br>
 <br>
 
 ## Contrato
